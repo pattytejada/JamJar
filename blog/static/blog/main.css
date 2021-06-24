@@ -2,7 +2,7 @@ body {
     background: #fafafa;
     color: #333333;
     margin-top: 5rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif
   }
 
 footer {
@@ -95,6 +95,6 @@ a.article-title:hover {
   }
 
 .jjfont {
-      font-family: 'Hammersmith One';
+      font-family: 'Hammersmith One', sans-serif;
       font-size: 25px;
   }
