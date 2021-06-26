@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Post
 
-# Register your models here.
+# allows for models like Post to be accessed through Admin site
+admin.site.register(Post)
+
