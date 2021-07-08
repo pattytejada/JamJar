@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 # form to update user model (update the database)
-class EmailUpdateForm(forms.ModelForm):
+class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 
     class Meta:

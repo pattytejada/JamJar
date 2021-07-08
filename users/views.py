@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, EmailUpdateForm, ProfilePictureUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfilePictureUpdateForm
 
 def register(request):
     # input validation for account creation
@@ -20,7 +20,7 @@ def register(request):
 @login_required
 def profile_settings(request):
     if request.method == 'POST':
-        u_form = EmailUpdateForm(request.POST, instance=request.user)
+        u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfilePictureUpdateForm(request.POST, 
                                    request.FILES, 
                                    instance=request.user.profile)
@@ -30,7 +30,7 @@ def profile_settings(request):
             messages.success(request, f'Your account has been updated!')
             return redirect('profile')
     else:
-        u_form = EmailUpdateForm(instance=request.user)
+        u_form = UserUpdateForm(instance=request.user)
         p_form = ProfilePictureUpdateForm(instance=request.user.profile)
 
     context = {
