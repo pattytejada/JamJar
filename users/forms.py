@@ -14,13 +14,13 @@ class UserRegisterForm(UserCreationForm):
 # form to update user model (update the database)
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+class ProfileUpdateForm(forms.ModelForm):
     location = forms.CharField()
     bio = forms.CharField()
     class Meta:
-        model = User
-        fields = ['username', 'email', 'location', 'bio']
-
-class ProfilePictureUpdateForm(forms.ModelForm):
-    class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['location', 'bio', 'image']
