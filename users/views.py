@@ -28,7 +28,7 @@ def profile_settings(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            return redirect('settings')
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfilePictureUpdateForm(instance=request.user.profile)

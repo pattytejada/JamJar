@@ -8,7 +8,6 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     location = models.CharField(max_length=50, null=True, blank=True)
     bio = models.TextField(max_length=150, null=True, blank=True)
-    favorites = models.ManyToManyField(Post)
 
     def __str__(self):
         return f'{self.user.username} Profile'
