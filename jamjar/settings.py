@@ -32,10 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',    #
-    'users.apps.UsersConfig', #
-    'comment.apps.CommentConfig', #
-    'crispy_forms', #
+    # Created Apps
+    'blog.apps.BlogConfig',    
+    'users.apps.UsersConfig', 
+    'comment.apps.CommentConfig', 
+    'dm.apps.DmConfig', 
+    'crispy_forms', 
+    # Inherited Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
