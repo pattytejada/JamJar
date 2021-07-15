@@ -1,4 +1,4 @@
-# JamJar - A Music Social Media Web App
+# JamJar - *CURRENTLY BEING BUILT*
 
 A music social media web app where you can discuss anything and everything about music.
 
