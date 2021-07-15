@@ -23,7 +23,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="navbar-nav mr-auto">
                 <!-- Navbar Left Side Goes Here -->
               </div>
@@ -43,15 +43,17 @@
                     <i class="material-icons">chat</i>
                   </a>
                   <!-- profile icon -->
-                  <a class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" href="#" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons">face</i>
-                  </a>
-                      <div class = "dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                        <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                      </div>
+                  <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="material-icons">face</i>
+                    </a>
+                        <div class = "dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                          <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                  </div>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                   <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
