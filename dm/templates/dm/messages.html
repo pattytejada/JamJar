@@ -6,7 +6,7 @@
   <div class="column is-one-quarter">
 
 <aside class="menu">
-    <h1 class="title is-2">
+    <h1 class="title is-2 has-text-centered">
     Messages
     </h1>
 <ul style="overflow-y: scroll; height: 500px" class="menu-list">
@@ -14,7 +14,7 @@
 
     {% for d_message in d_messages %}
     <a class="{% if active_dm == d_message.user.username %}is-active{% endif %}" href="{% url 'dms' d_message.user.username %}">
-        <div class="box">
+        <div class="box has-background-grey-lighter">
             <article class="media">
                 <div class="media-left">
                     <figure class="image is-64x64">
@@ -54,14 +54,16 @@
 <div style="overflow-y: scroll; height: 500px">
 
 {% for dm in dms %}
-<div class="box">
+<div class="box has-background-grey-lighter">
   <article class="media">
     <div class="media-left">
     </div>
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ dm.sender.profile.first_name }} {{ dm.sender.profile.last_name }}</strong> <small>@{{ dm.sender.username }}</small><strong><small> ({{ dm.date|date:'N d G:i'}})</small></strong>
+          <strong>{{ dm.sender.profile.first_name }} {{ dm.sender.profile.last_name }}</strong>
+          <small>@{{ dm.sender.username }}</small>
+          <strong><small> on {{ dm.date|date:'n-j-y, g:i A'}}</small></strong>
         </p>
         {{ dm.body }} 
       </div>
@@ -86,7 +88,7 @@
     <input type="hidden" name="to_user" value="{{ active_dm }}">
     <div class="field">
       <p class="control">
-        <textarea class="textarea" name="body" placeholder="Add a comment..."></textarea>
+        <textarea class="textarea" name="body" placeholder="Your response..."></textarea>
       </p>
     </div>
     <nav class="level">
