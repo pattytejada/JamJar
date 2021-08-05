@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.db.models import Max
+
 class Message(models.Model):
+    #user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user')
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user')
