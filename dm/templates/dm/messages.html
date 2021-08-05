@@ -12,30 +12,28 @@
 <ul style="overflow-y: scroll; height: 500px" class="menu-list">
     
 
-    {% for message in messages %}
-    <a class="{% if active_dm == message.user.username %}is-active{% endif %}" href="{% url 'dms' message.user.username %}}">
+    {% for d_message in d_messages %}
+    <a class="{% if active_dm == d_message.user.username %}is-active{% endif %}" href="{% url 'dms' d_message.user.username %}">
         <div class="box">
             <article class="media">
                 <div class="media-left">
                     <figure class="image is-64x64">
-                        {% if message.user.profile.picture %}
-                            <img src="{{ message.user.profile.picture.url }}" alt="Placeholder image">
-                        {% else %}
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        {% if d_message.user.profile.image.url %}
+                            <img class = "rounded-circle article-img" src="{{ d_message.user.profile.image.url }}">
                         {% endif %}
                     </figure>
                 </div>
                 <div class="media-content">
                     <div class="content">
                         <p>
-                        <strong>{{ message.user.username }}</strong> <small>@{{ message.user.username }}</small>
+                        <strong>{{ d_message.user.username }}</strong> <small>@{{ d_message.user.username }}</small>
                         </p>
                     </div>
 
                     <div class="content">
-                        {% if message.unread %}
+                        {% if d_message.unread %}
                         <p style="font-weight: bold; color: red;">
-                            <i class="material-icons">mark_chat_unread</i> {{ message.unread }}
+                            <i class="material-icons">mark_chat_unread</i> {{ d_message.unread }}
                         </p>
                         {% endif %}        
                     </div>
