@@ -24,11 +24,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
     path('profile/settings', user_views.profile_settings, name='settings'),
+
     path('messages', dm_views.inbox, name='messages'),
     path('messages/<username>', dm_views.Dms, name='dms'),
+    path('send/', dm_views.SendDm, name='send_dm'),
+    path('new/', dm_views.SearchUser, name='search_user'),
+
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password_reset'),

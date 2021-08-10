@@ -1,7 +1,12 @@
+from django.core import paginator
+from django.http.response import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from dm.models import Message
+
+from django.db.models import Q
+from django.core.paginator import Paginator
 
 @login_required
 def inbox(request):
@@ -47,3 +52,34 @@ def Dms(request, username):
         'active_direct':active_dm,
     }
     return render(request, 'dm/messages.html', context)
+
+@login_required
+def SendDm(request):
+    from_user = request.user
+    to_user_username = request.POST.get('to_user')
+    body = request.POST.get('body')
+
+    if request.method == 'POST':
+        to_user = User.objects.get(username=to_user_username)
+        Message.send_message(from_user, to_user, body)
+        return redirect('messages')
+    else:
+        HttpResponseBadRequest()
+
+@login_required
+def SearchUser(request):
+    query = request.GET.get('q')
+    context = {}
+
+    if query:
+        users = User.objects.filter(Q(username__icontains=query))
+        #Pagination
+        paginator = Paginator(users, 6)
+        page_number = request.GET.get('page')
+        users_paginator = paginator.get_page(page_number)
+
+        context = {
+            'users': users_paginator,
+        }
+
+    return render(request, 'dm/user_search.html', context)

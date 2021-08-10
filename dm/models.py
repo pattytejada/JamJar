@@ -15,7 +15,7 @@ class Message(models.Model):
     def send_message(from_user, to_user, body):
         sender_message = Message(
             user = from_user,
-            send = from_user,
+            sender = from_user,
             recipient = to_user,
             body = body,
             is_read = True)
