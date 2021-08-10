@@ -97,3 +97,11 @@ def NewConversation(request, username):
     if from_user != to_user:
         Message.send_message(from_user, to_user, body)
     return redirect('messages')
+
+# for notification on NavBar on user login
+def checkDms(request):
+	dms_count = 0
+	if request.user.is_authenticated:
+		dms_count = Message.objects.filter(user=request.user, is_read=False).count()
+
+	return {'dms_count':dms_count}

@@ -44,10 +44,15 @@
                   <a class="nav-item nav-link" href="{% url 'post-create' %}">
                     <i class="material-icons">post_add</i>
                   </a>
-                  <!-- messages icon -->  
+                  <!-- messages icon -DOESNT WORK- -->  
+                  {% if dms_count %}
                   <a class="nav-item nav-link" href="{% url 'messages' %}">
-                    <i class="material-icons">chat</i>
+                    <i class="material-icons">mark_chat_unread</i> {{dms_count}}
+                  {% else %}
+                  <a class="nav-item nav-link" href="{% url 'messages' %}">
+                    <i class="material-icons">chat_bubble_outline</i>
                   </a>
+                  {% endif %}   
                   <!-- profile icon -->
                   <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
