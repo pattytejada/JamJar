@@ -31,7 +31,7 @@ urlpatterns = [
 
     path('messages', dm_views.inbox, name='messages'),
     path('messages/<username>', dm_views.Dms, name='dms'),
-    path('send/', dm_views.SendDm, name='send_dm'),
+    path('messages/send/', dm_views.SendDm, name='send_dm'),
     path('messages/new/', dm_views.SearchUser, name='search_user'),
     path('messages/new/<username>', dm_views.NewConversation, name='new_conversation'),
 

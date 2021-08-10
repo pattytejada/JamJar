@@ -50,7 +50,7 @@ def Dms(request, username):
     context = {
         'dms': dms,
         'd_messages': d_messages,
-        'active_direct':active_dm,
+        'active_dm':active_dm,
     }
     return render(request, 'dm/messages.html', context)
 
@@ -60,12 +60,20 @@ def SendDm(request):
     to_user_username = request.POST.get('to_user')
     body = request.POST.get('body')
 
-    if request.method == 'POST':
-        to_user = User.objects.get(username=to_user_username)
-        Message.send_message(from_user, to_user, body)
-        return redirect('messages')
-    else:
-        HttpResponseBadRequest()
+    try:
+        if request.method == 'POST':
+            to_user = User.objects.get(username=to_user_username)
+            Message.send_message(from_user, to_user, body)
+            return redirect('messages')
+        else:
+            HttpResponseBadRequest()
+    except: #for message/<username> case
+        if request.method == 'POST':
+            to_user = User.objects.get(username='MaeMae')
+            Message.send_message(from_user, to_user, body)
+            return redirect('dms')
+        else:
+            HttpResponseBadRequest()
 
 @login_required
 def SearchUser(request):

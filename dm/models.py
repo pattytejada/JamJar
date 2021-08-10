@@ -33,7 +33,7 @@ class Message(models.Model):
     # list of different messages from different users
     def get_messages(user):
         users = []
-        d_messages = Message.objects.filter(user=user).values('recipient').annotate(last=Max('date')).order_by('last')
+        d_messages = Message.objects.filter(user=user).values('recipient').annotate(last=Max('date')).order_by('-last')
         for d_message in d_messages:
             users.append({
                 'user': User.objects.get(pk=d_message['recipient']),
