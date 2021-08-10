@@ -29,10 +29,8 @@
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">
-            {% if user.profile.picture %}
-              <img src="{{ user.profile.picture.url }}" alt="Placeholder image">
-            {% else %}
-              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            {% if user.profile.image.url %}
+              <img class = "rounded-circle article-img "src="{{ user.profile.image.url }}" alt="Placeholder image">
             {% endif %}
         </figure>
       </div>
@@ -41,7 +39,7 @@
           <p>
             <strong>{{ user.profile.first_name }} {{ user.profile.last_name }}</strong><small>@{{ user.username }}</small>
           </p>
-          <a href="{% url 'newconversation' user.username %}" class="button is-info">Send a message!</a>
+          <a href="{% url 'new_conversation' user.username %}" class="button is-info">Send a message!</a>
         </div>
       </div>
     </article>
